@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>모두의 직업-학과 커리큘럼 상담 스튜디오</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-dot"></span><strong>교사용 진로·학과 상담 파일</strong></div>
+    <nav>
+      <button class="ghost" id="toneBtn">화면 톤 전환</button>
+      <button class="primary" id="printBtn">학생 리포트 출력</button>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="hero compact-card">
+      <div>
+        <p class="eyebrow">CAREER · MAJOR · CURRICULUM NAVIGATOR</p>
+        <h1><span>모두의</span> 직업-학과<br/>커리큘럼 상담 스튜디오</h1>
+        <p class="lead">직업명만 보고 판단하지 않도록, 학생의 흥미·생기부 키워드·고교 선택과목·대학 전공 커리큘럼을 한 화면에서 연결합니다.</p>
+        <p class="source-note">참고 구조: 커리어넷 학과/직업정보, 대입정보포털 어디가, 대학별 전공가이드북, NCS 직무 분류를 상담용으로 재구성</p>
+        <strong>Copyright@All Teachers</strong>
+      </div>
+      <aside class="flow-card">
+        <b>상담 흐름</b>
+        <ol><li>키워드 입력</li><li>직업 카드 확인</li><li>팝업에서 커리큘럼 상담</li><li>비교·메모·리포트 출력</li></ol>
+      </aside>
+    </section>
+
+    <section class="control-panel compact-card">
+      <input id="searchInput" placeholder="직업명·학과명·과목명·키워드 검색 예: 반도체, 심리, 생명과학, 데이터" />
+      <select id="categorySelect"><option value="전체">전체 계열</option></select>
+      <select id="sortSelect"><option value="recommend">추천순</option><option value="name">이름순</option><option value="major">학과 많은순</option></select>
+      <button id="resetBtn">초기화</button>
+    </section>
+
+    <section class="chips" id="chips"></section>
+
+    <section class="dashboard">
+      <div class="results-area">
+        <div class="section-title"><h2 id="resultTitle">탐색 결과</h2><p>카드를 누르면 상세 팝업이 열립니다.</p></div>
+        <div class="card-grid" id="cards"></div>
+      </div>
+
+      <aside class="side-panel">
+        <div class="side-card compare-box">
+          <h3>선택 비교</h3>
+          <p>최대 4개 직업을 담아 학생 상담 시 나란히 비교합니다.</p>
+          <div id="compareList" class="compare-list"></div>
+          <button id="clearCompare" class="ghost full">비교 비우기</button>
+        </div>
+        <div class="side-card memo-box">
+          <h3>전문 상담 메모</h3>
+          <div class="memo-row"><input id="studentName" placeholder="학생명"/><input id="teacherName" placeholder="상담교사"/></div>
+          <textarea id="memoText" placeholder="학생 흥미, 교과 강점, 생기부 키워드, 추천 학과, 다음 상담 과제를 기록하세요."></textarea>
+          <div class="memo-actions"><button id="saveMemo" class="primary">저장</button><button id="loadMemo" class="ghost">불러오기</button></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="detailModal">
+    <div class="modal-head"><div><p class="eyebrow" id="modalCat"></p><h2 id="modalTitle"></h2></div><button id="closeModal" class="ghost">닫기</button></div>
+    <div class="modal-body">
+      <div class="modal-visual" id="modalVisual"></div>
+      <div class="modal-info">
+        <p id="modalDesc" class="modal-desc"></p>
+        <div class="info-grid">
+          <article><h4>관련 학과</h4><div id="modalMajors" class="tagbox"></div></article>
+          <article><h4>대학 커리큘럼</h4><ul id="modalCurriculum"></ul></article>
+          <article><h4>배우는 내용</h4><ul id="modalLearning"></ul></article>
+          <article><h4>2015 개정 고교 과목</h4><div id="modal2015" class="tagbox course"></div></article>
+          <article><h4>2022 개정 고교 과목</h4><div id="modal2022" class="tagbox course"></div></article>
+          <article><h4>진로·활동 제안</h4><ul id="modalPath"></ul></article>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <section id="report" class="print-report">
+    <h1>학생 진로·학과 상담 리포트</h1>
+    <p class="report-sub">모두의 직업-학과 커리큘럼 상담 스튜디오 · Copyright@All Teachers</p>
+    <div id="reportContent"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
