@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>모두의 직업-학과 커리큘럼 상담 스튜디오 NEO</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ticker" aria-label="전광판">
+    <div class="ticker-track">CAREER · MAJOR · CURRICULUM NAVIGATOR  |  직업명으로 단정하지 말고, 배우는 내용과 고교 과목, 전공 커리큘럼까지 연결하세요.  |  상담 → 비교 → 학생 리포트 출력</div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand"><span class="orb"></span><b>교사용 진로·학과 상담 파일</b></div>
+    <div class="top-actions">
+      <button id="themeBtn">화면 톤 전환</button>
+      <button id="printBtn" class="dark">학생 리포트 출력</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">CAREER · MAJOR · CURRICULUM STUDIO</p>
+      <h1><span>모두의</span> 직업-학과<br/>커리큘럼 상담 스튜디오</h1>
+      <p class="lead">학생의 흥미·생기부 키워드·고교 선택과목·대학 전공 커리큘럼을 한 화면에서 연결합니다.</p>
+      <p class="copyright">Copyright@All Teachers</p>
+    </div>
+    <div class="hero-panel">
+      <div class="flow-card">
+        <b>상담 흐름</b>
+        <ol><li>키워드 입력</li><li>직업 카드 확인</li><li>팝업에서 커리큘럼 상담</li><li>비교·메모·리포트 출력</li></ol>
+      </div>
+      <div class="metric-row">
+        <div><strong id="careerCount">780</strong><span>직업 프로필</span></div>
+        <div><strong>2015/2022</strong><span>과목 분리</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="layout">
+    <section class="workspace">
+      <div class="searchdock">
+        <input id="q" placeholder="직업명·학과명·과목명·키워드 검색 예: 반도체, 심리, 생명과학, 데이터" />
+        <select id="cat"></select>
+        <select id="sort">
+          <option value="recommend">추천순</option>
+          <option value="title">가나다순</option>
+          <option value="category">계열순</option>
+        </select>
+        <button id="resetBtn">초기화</button>
+      </div>
+
+      <div id="chips" class="chips"></div>
+
+      <div class="section-head">
+        <div><h2>탐색 결과 <span id="resultCount">0</span>개</h2><p>카드를 누르면 역동적인 상세 팝업이 열립니다.</p></div>
+        <div class="view-toggle"><button id="gridBtn" class="active">카드형</button><button id="compactBtn">압축형</button></div>
+      </div>
+
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <aside class="side">
+      <section class="glass">
+        <h3>선택 비교</h3>
+        <p>최대 4개 직업을 담아 학과·커리큘럼·고교 과목을 비교합니다.</p>
+        <div id="compareBox" class="compareBox"></div>
+        <button id="clearCompare" class="wide">비교 비우기</button>
+      </section>
+
+      <section class="glass memo">
+        <h3>전문 상담 메모</h3>
+        <div class="memo-grid">
+          <input id="student" placeholder="학생명" />
+          <input id="teacher" placeholder="상담교사" />
+        </div>
+        <textarea id="memo" placeholder="학생 흥미, 생기부 키워드, 추천 학과, 다음 상담 과제를 기록하세요."></textarea>
+        <div class="memo-actions"><button id="saveMemo">저장</button><button id="loadMemo">불러오기</button><button id="exportMemo">내보내기</button></div>
+      </section>
+    </aside>
+  </main>
+
+  <dialog id="modal">
+    <div class="modal-head">
+      <div><p id="modalCat" class="tag"></p><h2 id="modalTitle"></h2></div>
+      <button id="closeModal" class="close">×</button>
+    </div>
+    <div class="modal-body">
+      <div id="modalArt" class="big-art"></div>
+      <div class="detail">
+        <h3>직업 이해</h3><p id="modalSummary"></p>
+        <h3>관련 학과</h3><div id="modalMajors" class="pillbox"></div>
+        <h3>대학 커리큘럼·배우는 내용</h3><ul id="modalCurriculum"></ul>
+        <div class="split">
+          <div class="subjectBox"><h3>2015 개정 고교 과목</h3><div id="modal2015" class="pillbox"></div></div>
+          <div class="subjectBox"><h3>2022 개정 고교 과목</h3><div id="modal2022" class="pillbox"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot"><button id="addCompare" class="dark">비교에 담기</button><button id="printOne">이 직업 리포트 출력</button></div>
+  </dialog>
+
+  <section id="report" class="report">
+    <h1>학생 진로·학과 상담 리포트</h1>
+    <p class="small">모두의 직업-학과 커리큘럼 상담 스튜디오 · Copyright@All Teachers</p>
+    <div id="reportContent"></div>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
